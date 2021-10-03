@@ -5,7 +5,7 @@
    "dir": "ltr",
    "lang": "en-US",
    "start_url": "/index.html",
-   "scope": "/",
+   "scope": "/Book-Cover-Template/",
    "display": "standalone",
    "orientation": "portrait-primary",
    "background_color": "#717375",
