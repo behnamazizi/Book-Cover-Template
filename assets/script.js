@@ -15,11 +15,11 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log('Registration failed with ' + error);
         });
     }
-    const elm = document.querySelector("#bookCoverTemplate");
     draw()
-
+    
 })
- 
+
+const elm = document.querySelector("#bookCoverTemplate");
 const Base64 = {
     _keyStr: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",
     encode: function (input) {
