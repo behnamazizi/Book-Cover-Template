@@ -1,4 +1,4 @@
-const CacheName = '22_49_03_Oct_21';
+const CacheName = '22_57_03_Oct_21';
 const assets = [
     '/Book-Cover-Template/',
     '/Book-Cover-Template/index.html',
