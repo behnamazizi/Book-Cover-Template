@@ -81,6 +81,9 @@ body{
    border-radius: 5px;
    font-weight: bold;
 }
+#bookCoverTemplate form label *:disabled {
+   background: var(--c-b-7);
+}
 
 @media screen and (max-width:720px) {
    body{
