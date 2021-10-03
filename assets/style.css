@@ -1,0 +1,102 @@
+*{
+   -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -box-sizing: border-box;
+   --c-a-0: white;
+   --c-a-1: black;
+   --c-b-0: hsl(0deg, 0%, 5%);
+   --c-b-1: hsl(0deg, 0%, 10%);
+   --c-b-2: hsl(0deg, 0%, 15%);
+   --c-b-3: hsl(0deg, 0%, 25%);
+   --c-b-4: hsl(0deg, 0%, 35%);
+   --c-b-5: hsl(0deg, 0%, 45%);
+   --c-b-6: hsl(0deg, 0%, 55%);
+   --c-b-7: hsl(0deg, 0%, 65%);
+   --c-b-8: hsl(0deg, 0%, 75%);
+   --c-b-9: hsl(0deg, 0%, 85%);
+   --c-b-10: hsl(0deg, 0%, 90%);
+   --c-b-11: hsl(0deg, 0%, 95%);
+   --c-c-0: salmon;
+}
+html, body{
+   position: relative;
+   height: 100%;
+   width: 100%;
+}
+body{
+   display: grid;
+   background: var(--c-b-2);
+   grid-template: 1fr/1fr;
+   padding: 10px;
+   overflow: hidden;
+   box-sizing: border-box;
+   align-items: center;
+   align-content: center;
+}
+#bookCoverTemplate{
+   display: grid;
+   grid-template: 95vh/ 250px 1fr;
+   gap: 10px;
+   position: relative;
+   box-sizing: border-box;
+   align-items: center;
+   justify-items: center;
+   height: 100%;
+}
+#bookCoverTemplate img{
+   grid-area: 1/2/span 1/ span 1;
+   max-width: 100%;
+   max-height: 100%;
+   object-fit: contain;
+}
+#bookCoverTemplate form{
+   display: flex;
+   gap: 10px;
+   flex-direction: column;
+}
+#bookCoverTemplate form label{
+   font-family: monospace;
+   color: salmon;
+   display: grid;
+   grid-template: 20px 20px / 1fr;
+   background: var(--c-b-3);
+   border-radius: 5px;
+   border: 1px solid var(--c-b-4);
+   padding: 5px;
+   text-align: center;
+}
+#bookCoverTemplate form label>*{
+   width: 200px;
+   margin: 0;
+   border: 0;
+   outline: 0;
+   box-sizing: border-box;
+}
+#bookCoverTemplate form label>*:not(span){
+   color: black;
+   background: white;
+   text-align: center;
+   line-height: 20px;
+   text-decoration: none;
+   border-radius: 5px;
+   font-weight: bold;
+}
+
+@media screen and (max-width:720px) {
+   body{
+      overflow: hidden scroll;
+      align-items: top;
+      align-content: start;
+   }
+   #bookCoverTemplate {
+      grid-template: 300px auto/ 1fr;
+      align-items: start;
+   }
+   #bookCoverTemplate img{
+      grid-area: 1/1/span 1/ span 1;
+   }
+   #bookCoverTemplate form{
+      grid-area: 2/1/span 1/ span 1;
+      padding-bottom: 80px;
+   }
+}
