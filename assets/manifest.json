@@ -4,7 +4,7 @@
    "description": "Generate precise template to design book cover",
    "dir": "ltr",
    "lang": "en-US",
-   "start_url": "/index.html",
+   "start_url": "/Book-Cover-Template/index.html",
    "scope": "/Book-Cover-Template/",
    "display": "standalone",
    "orientation": "portrait-primary",
