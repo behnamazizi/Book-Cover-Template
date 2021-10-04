@@ -1,10 +1,19 @@
-const CacheName = '22_20_04_Oct_21';
+const CacheName = '22_36_04_Oct_21';
 const assets = [
     '/Book-Cover-Template/',
     '/Book-Cover-Template/index.html',
+    '/Book-Cover-Template/assets/',
     '/Book-Cover-Template/assets/reset.css',
     '/Book-Cover-Template/assets/style.css',
-    '/Book-Cover-Template/assets/script.js'
+    '/Book-Cover-Template/assets/script.js',
+    '/Book-Cover-Template/assets/images/icon_48.png',
+    '/Book-Cover-Template/assets/images/icon_72.png',
+    '/Book-Cover-Template/assets/images/icon_96.png',
+    '/Book-Cover-Template/assets/images/icon_144.png',
+    '/Book-Cover-Template/assets/images/icon_168.png',
+    '/Book-Cover-Template/assets/images/icon_192.png',
+    '/Book-Cover-Template/assets/images/icon_256.png',
+    '/Book-Cover-Template/assets/images/icon_512.png'
 ];
 
 // install event
