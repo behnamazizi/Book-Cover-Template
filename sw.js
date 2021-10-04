@@ -1,8 +1,7 @@
-const CacheName = '23_48_04_Oct_21';
+const CacheName = '23_49_04_Oct_21';
 const assets = [
     '/Book-Cover-Template/',
     '/Book-Cover-Template/index.html',
-    '/Book-Cover-Template/assets/',
     '/Book-Cover-Template/assets/reset.css',
     '/Book-Cover-Template/assets/style.css',
     '/Book-Cover-Template/assets/script.js',
