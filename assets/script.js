@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    window.resizeTo(800, 700);
 
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('sw.js', {scope: '/Book-Cover-Template/'})

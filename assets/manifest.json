@@ -6,7 +6,7 @@
    "lang": "en-US",
    "start_url": "/Book-Cover-Template/index.html",
    "scope": "/Book-Cover-Template/",
-   "display": "minimal-ui",
+   "display": "standalone",
    "orientation": "portrait-primary",
    "background_color": "#717375",
    "theme_color": "#262626",
