@@ -8,8 +8,8 @@
    "scope": "/Book-Cover-Template/",
    "display": "standalone",
    "orientation": "portrait-primary",
-   "background_color": "#717375",
-   "theme_color": "#262626",
+   "background_color": "#23222a",
+   "theme_color": "#23222a",
    "categories": ["utilities"],
    "icons": [{
        "src": "images/icon_48.png",
