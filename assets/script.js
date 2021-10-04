@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log('Registration failed with ' + error);
             });
     }
-    window.resizeTo(960, 760);
+    window.resizeTo(965, 765);
     draw()
 
 })
