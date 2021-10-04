@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    window.resizeTo(800, 700);
+    
 
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('sw.js', {scope: '/Book-Cover-Template/'})
@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log('Registration failed with ' + error);
         });
     }
+    window.resizeTo(800, 700);
     draw()
     
 })
