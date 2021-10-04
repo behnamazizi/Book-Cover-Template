@@ -1,19 +1,19 @@
-const CacheName = '23_44_04_Oct_21';
+const CacheName = '23_48_04_Oct_21';
 const assets = [
-    '/',
-    '/index.html',
-    '/assets/',
-    '/assets/reset.css',
-    '/assets/style.css',
-    '/assets/script.js',
-    '/assets/images/icon_48.png',
-    '/assets/images/icon_72.png',
-    '/assets/images/icon_96.png',
-    '/assets/images/icon_144.png',
-    '/assets/images/icon_168.png',
-    '/assets/images/icon_192.png',
-    '/assets/images/icon_256.png',
-    '/assets/images/icon_512.png'
+    '/Book-Cover-Template/',
+    '/Book-Cover-Template/index.html',
+    '/Book-Cover-Template/assets/',
+    '/Book-Cover-Template/assets/reset.css',
+    '/Book-Cover-Template/assets/style.css',
+    '/Book-Cover-Template/assets/script.js',
+    '/Book-Cover-Template/assets/images/icon_48.png',
+    '/Book-Cover-Template/assets/images/icon_72.png',
+    '/Book-Cover-Template/assets/images/icon_96.png',
+    '/Book-Cover-Template/assets/images/icon_144.png',
+    '/Book-Cover-Template/assets/images/icon_168.png',
+    '/Book-Cover-Template/assets/images/icon_192.png',
+    '/Book-Cover-Template/assets/images/icon_256.png',
+    '/Book-Cover-Template/assets/images/icon_512.png'
 ];
 
 // install event
