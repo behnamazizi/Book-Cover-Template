@@ -62,7 +62,7 @@ function draw() {
         typeofcover = parseFloat(elm.querySelector('[name="typeofcover"]').value.replace(",", ".")),
         spine = spinecalc(paperweight, papervolume, numberofpages, typeofcover) / 10;
 
-    elm.querySelector('[name="spine"]').value = spine
+    elm.querySelector('[name="spine"]').value = spine.toFixed(2)
     elm.querySelector('img') ? elm.querySelector('img').remove() : '';
     let svg = `
         <svg id="BookTemplate"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${(width * 2) + spine + (bleed * 2)} ${height + (bleed * 2)}" width="${(width * 2) + spine + (bleed * 2)}cm" height="${height + (bleed * 2)}cm">
