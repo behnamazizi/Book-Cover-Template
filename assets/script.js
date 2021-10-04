@@ -1,24 +1,26 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
+
 
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('sw.js', {scope: '/Book-Cover-Template/'})
-        .then(function (reg) {
-            if (reg.installing) {
-                console.log('Service worker installing');
-            } else if (reg.waiting) {
-                console.log('Service worker installed');
-            } else if (reg.active) {
-                console.log('Service worker active');
-            }
-        })
-        .catch(function (error) {
-            console.log('Registration failed with ' + error);
-        });
+        navigator.serviceWorker.register('sw.js', {
+                scope: '/Book-Cover-Template/'
+            })
+            .then(function (reg) {
+                if (reg.installing) {
+                    console.log('Service worker installing');
+                } else if (reg.waiting) {
+                    console.log('Service worker installed');
+                } else if (reg.active) {
+                    console.log('Service worker active');
+                }
+            })
+            .catch(function (error) {
+                console.log('Registration failed with ' + error);
+            });
     }
     window.resizeTo(800, 700);
     draw()
-    
+
 })
 
 const elm = document.querySelector("#bookCoverTemplate");
@@ -57,32 +59,59 @@ function draw() {
         height = parseFloat(elm.querySelector('[name="height"]').value.replace(",", ".")),
         bleed = parseFloat(elm.querySelector('[name="bleed"]').value.replace(",", ".")),
         paperweight = parseFloat(elm.querySelector('[name="paperweight"]').value.replace(",", ".")),
-        papervolume = parseFloat(elm.querySelector('[name="papervolume"]').value.replace(",", ".")),
         numberofpages = parseFloat(elm.querySelector('[name="numberofpages"]').value.replace(",", ".")),
         typeofcover = parseFloat(elm.querySelector('[name="typeofcover"]').value.replace(",", ".")),
-        spine = spinecalc(paperweight, papervolume, numberofpages, typeofcover) / 10;
+        papervolume = 0;
+        
 
+    if (elm.querySelector('[name="papervolume"]').value == 0) {
+        elm.querySelector('[name="papervolumenumber"]').disabled = false;
+        papervolume = parseFloat(elm.querySelector('[name="papervolumenumber"]').value.replace(",", "."))
+    } else {
+        elm.querySelector('[name="papervolumenumber"]').disabled = true;
+        papervolume = parseFloat(elm.querySelector('[name="papervolume"]').value.replace(",", "."))
+        elm.querySelector('[name="papervolumenumber"]').value = papervolume
+    }
+    spine = spinecalc(paperweight, papervolume, numberofpages, typeofcover) / 10;
     elm.querySelector('[name="spine"]').value = spine.toFixed(2)
-    elm.querySelector('img') ? elm.querySelector('img').remove() : '';
+    elm.querySelector('#temp') ? elm.querySelector('img').remove() : '';
     let svg = `
         <svg id="BookTemplate"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${(width * 2) + spine + (bleed * 2)} ${height + (bleed * 2)}" width="${(width * 2) + spine + (bleed * 2)}cm" height="${height + (bleed * 2)}cm">
             <style>
                 .obj{
-                    fill: transparent;
-                    stroke: salmon;
+                    fill: none;
+                    stroke: #ff5722;
+                    stroke-width: 0.0352778;
+                }
+                .description{
+                    font-size: .5px;
+                    fill: salmon;
+                    font-family: monospace, 'Courier New', Courier ;
+                }
+                .cross{
+                    stroke: #ff5722;
                     stroke-width: 0.0352778;
                 }
             </style>
             <g>
-                <rect id="bleed" class="obj" x="0" y="0" width="${(width * 2) + spine + (bleed * 2)}" height="${height + (bleed * 2)}" />
-                <rect id="front" class="obj" x="${bleed}" y="${bleed}" width="${width}" height="${height}" />
-                <rect id="back" class="obj" x="${width + spine + bleed}" y="${bleed}" width="${width}" height="${height}" />
-                <rect id="spine" class="obj" x="${width + bleed}" y="${bleed}" width="${spine}" height="${height}" />
+            <rect id="bleed" class="obj" x="0" y="0" width="${(width * 2) + spine + (bleed * 2)}" height="${height + (bleed * 2)}" />
+            <rect id="front" class="obj" x="${bleed}" y="${bleed}" width="${width}" height="${height}" />
+            <rect id="back" class="obj" x="${width + spine + bleed}" y="${bleed}" width="${width}" height="${height}" />
+            <rect id="spine" class="obj" x="${width + bleed}" y="${bleed}" width="${spine}" height="${height}" />
+            <g>
+                <line class="cross" x1="${bleed}" y1="${bleed}" x2="${bleed + width}" y2="${bleed + height}" />
+                <line class="cross" x1="${bleed + width}" y1="${bleed}" x2="${bleed}" y2="${bleed + height}" />
             </g>
+            <g>
+                <line class="cross" x1="${bleed + width + spine}" y1="${bleed}" x2="${bleed + (width * 2) + spine}" y2="${bleed + height}" />
+                <line class="cross" x1="${bleed + (width * 2) + spine}" y1="${bleed}" x2="${bleed + width + spine}" y2="${bleed + height}" />
+            </g>
+            </g>
+            <text class="description" text-anchor="middle" x="${(bleed + (width / 2))}" y="${height}">Width:${width} CM - Height: ${height} CM - Spine: ${spine.toFixed(2)} CM</text>
         </svg>`;
-    elm.insertAdjacentHTML('beforeend', `<img alt="template" src="data:image/svg+xml;base64,${Base64.encode(svg)}">`)
-    elm.querySelector('[name="save"]').setAttribute('href',`data:image/svg+xml;base64,${Base64.encode(svg)}`)
-    
+    elm.insertAdjacentHTML('beforeend', `<img id="temp" alt="template" src="data:image/svg+xml;base64,${Base64.encode(svg)}">`)
+    elm.querySelector('[name="save"]').setAttribute('href', `data:image/svg+xml;base64,${Base64.encode(svg)}`)
+
 }
 
 function spinecalc(paperweight, papervolume, numberofpages, typeofcover) {
@@ -94,11 +123,12 @@ function p(set) {
     set == 0 ? elm.querySelector('[name="preset"]').value = 0 : '';
     let presets = [
         [elm.querySelector('[name="width"]').value,
-        elm.querySelector('[name="height"]').value,
-        elm.querySelector('[name="bleed"]').value],
-        [16.5,23.5,.5],
-        [21,28,.5],
-        [14,21,.5],
+            elm.querySelector('[name="height"]').value,
+            elm.querySelector('[name="bleed"]').value
+        ],
+        [16.5, 23.5, .5],
+        [21, 28, .5],
+        [14, 21, .5],
     ];
     elm.querySelector('[name="width"]').value = presets[set][0];
     elm.querySelector('[name="height"]').value = presets[set][1];

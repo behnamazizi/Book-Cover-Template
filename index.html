@@ -13,16 +13,17 @@
    <link rel="manifest" href="assets/manifest.json">
 
    <script src="assets/script.js" defer></script>
-   <title>Book Spine 1.0</title>
+   <title>Book Cover Template Generator 1.1</title>
 </head>
 
 <body>
    <div id="bookCoverTemplate">
+      
       <form>
          <label>
             <span>Preset: </span>
             <select name="preset" oninput="p(this.value)">
-               <option value="0">custom</option>
+               <option value="0">Custom</option>
                <option value="1">Vaziri</option>
                <option value="2">Rahli</option>
                <option value="3">Roghee</option>
@@ -51,6 +52,7 @@
          <label>
             <span>Paper Type: </span>
             <select name="papervolume" oninput="draw()">
+               <option value="00">Custom</option>
                <option value="8">Gloss</option>
                <option value="9">Satin</option>
                <option value="9">Matt</option>
@@ -60,6 +62,10 @@
                <option value="12.5">Book Wove</option>
                <option value="18">Book Wove Cream</option>
             </select>
+         </label>
+         <label>
+            <span>Paper Volume: </span>
+            <input type="number" name="papervolumenumber" value="00" disabled oninput="draw()">
          </label>
          <label>
             <span>Cover Type: </span>
@@ -76,8 +82,19 @@
             <span>Save Template:</span>
             <a href=""  name="save" target="_blank" rel="noopener noreferrer" download="template">Save</a>
          </label>
-
+         <a class="btn about" href="#about">About</a>
       </form>
+      <article id="about">
+         <button name="close" onclick="window.location.hash = ''">close</button>
+         <img src="assets/images/icon_512.png" alt="Book Cover Template Generator" width="280">
+         <h1>Book Cover Template Generator</h1>
+         <p>Generate precise template to design a book cover.<br>you can save the template and import it to design applications such as Adobe Illustrator.</p>
+         <nav>
+            <a href="https://github.com/behnamazizi/Book-Cover-Template" rel="noreferrer" target="_blank">Github</a>
+            <a href="http://behnamazizi.com" rel="noreferrer" target="_blank">Me</a>
+
+         </nav>
+      </article>
    </div>
 </body>
 

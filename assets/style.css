@@ -1,12 +1,12 @@
-*{
+* {
    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    -box-sizing: border-box;
+   -moz-osx-font-smoothing: grayscale;
+   -box-sizing: border-box;
    --c-a-0: white;
    --c-a-1: black;
    --c-b-0: hsl(247deg, 10%, 5%);
    --c-b-1: hsl(247deg, 10%, 10%);
-   --c-b-2: hsl(248, 11%, 15%);
+   --c-b-2: hsl(247deg, 10%, 15%);
    --c-b-3: hsl(247deg, 10%, 25%);
    --c-b-4: hsl(247deg, 10%, 35%);
    --c-b-5: hsl(247deg, 10%, 45%);
@@ -18,12 +18,15 @@
    --c-b-11: hsl(247deg, 10%, 95%);
    --c-c-0: salmon;
 }
-html, body{
+
+html,
+body {
    position: relative;
    height: 100%;
    width: 100%;
 }
-body{
+
+body {
    display: grid;
    background: var(--c-b-2);
    grid-template: 1fr/1fr;
@@ -33,7 +36,8 @@ body{
    align-items: center;
    align-content: center;
 }
-#bookCoverTemplate{
+
+#bookCoverTemplate {
    display: grid;
    grid-template: 95vh/ 250px 1fr;
    gap: 10px;
@@ -43,18 +47,22 @@ body{
    justify-items: center;
    height: 100%;
 }
-#bookCoverTemplate img{
+
+#temp {
    grid-area: 1/2/span 1/ span 1;
    max-width: 100%;
    max-height: 100%;
    object-fit: contain;
 }
-#bookCoverTemplate form{
+
+form {
+   grid-area: 1/1/span 1 / span 1;
    display: flex;
    gap: 10px;
    flex-direction: column;
 }
-#bookCoverTemplate form label{
+
+form label {
    font-family: monospace;
    color: var(--c-c-0);
    display: grid;
@@ -65,14 +73,16 @@ body{
    padding: 5px;
    text-align: center;
 }
-#bookCoverTemplate form label>*{
+
+form label>* {
    width: 200px;
    margin: 0;
    border: 0;
    outline: 0;
    box-sizing: border-box;
 }
-#bookCoverTemplate form label>*:not(span){
+
+form label>*:not(span) {
    color: black;
    background: white;
    text-align: center;
@@ -81,24 +91,116 @@ body{
    border-radius: 5px;
    font-weight: bold;
 }
-#bookCoverTemplate form label *:disabled {
+
+form label *:disabled {
    background: var(--c-b-7);
 }
 
+.about.btn {
+   color: var(--c-b-5);
+   text-align: center;
+   text-decoration: none;
+   font-family: monospace, 'Courier New', Courier;
+   border-bottom: 1px dotted;
+   width: fit-content;
+   align-self: center;
+}
+
+article {
+   display: none;
+   grid-area: 1 / 2 / span 1 / span 1;
+   background: var(--c-b-6);
+   width: clamp(250px, 50%, calc(100% - 80px));
+   padding: 50px;
+   z-index: 99;
+   background: var(--c-b-3);
+   border-radius: 5px;
+   border: 1px solid var(--c-b-4);
+   flex-direction: column;
+   gap: 10px;
+   font-family: sans-serif, arial;
+   color: var(--c-b-10);
+   font-size: 15px;
+   line-height: 1.2em;
+   position: relative;
+   align-items: center;
+   justify-self: center;
+}
+
+article:target {
+   display: flex;
+}
+
+article h1 {
+   font-weight: bold;
+   font-size: 16px;
+}
+
+article nav {
+   display: flex;
+   justify-content: center;
+   gap: 20px;
+}
+
+article nav a {
+   text-decoration: none;
+   color: var(--c-c-0);
+}
+
+[name="close"] {
+   background: unset;
+   outline: 0;
+   border: 0;
+   cursor: pointer;
+   position: absolute;
+   right: 0;
+   top: 0;
+   width: 50px;
+   height: 50px;
+   color: var(--c-b-9);
+   font-size: 0;
+   color: transparent;
+}
+
+[name="close"]:before,
+[name="close"]:after {
+   content: "";
+   width: 25px;
+   height: 1px;
+   border-bottom: 2px solid var(--c-b-9);
+   left: 25%;
+   top: 50%;
+   transform: rotate(45deg);
+   position: absolute;
+}
+
+[name="close"]:after {
+   transform: rotate(-45deg);
+}
+
 @media screen and (max-width:720px) {
-   body{
+   body {
       overflow: hidden scroll;
       align-items: top;
       align-content: start;
    }
+
    #bookCoverTemplate {
       grid-template: 300px auto/ 1fr;
       align-items: start;
    }
-   #bookCoverTemplate img{
+
+   #temp {
       grid-area: 1/1/span 1/ span 1;
    }
-   #bookCoverTemplate form{
+
+   article {
+      grid-area: 1/1/-1/ -1;
+      padding: 50px 20px;
+      width: calc(100% - 50px);
+   }
+
+   form {
       grid-area: 2/1/span 1/ span 1;
       padding-bottom: 80px;
    }
