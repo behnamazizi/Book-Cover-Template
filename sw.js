@@ -1,10 +1,11 @@
-const CacheName = '23_49_04_Oct_21';
+const CacheName = '23_52_04_Oct_21';
 const assets = [
     '/Book-Cover-Template/',
     '/Book-Cover-Template/index.html',
     '/Book-Cover-Template/assets/reset.css',
     '/Book-Cover-Template/assets/style.css',
     '/Book-Cover-Template/assets/script.js',
+    '/Book-Cover-Template/assets/manifest.json',
     '/Book-Cover-Template/assets/images/icon_48.png',
     '/Book-Cover-Template/assets/images/icon_72.png',
     '/Book-Cover-Template/assets/images/icon_96.png',
